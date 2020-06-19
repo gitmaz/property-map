@@ -1,0 +1,63 @@
+{
+  "name": "Property-Map",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "server": "node server/index.js",
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-rc.1",
+    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-eslint": "^3.0.4",
+    "@vue/cli-service": "^3.5.1",
+    "cosmicjs": "^3.2.15",
+    "mapbox-gl": "^1.11.0",
+    "moment": "^2.22.2",
+    "node-sass": "^4.14.1",
+    "pg-restify": "^0.5.0",
+    "restify": "^7.2.1",
+    "restify-cors-middleware": "^1.1.1",
+    "sass-loader": "^8.0.2",
+    "underscore": "^1.9.1",
+    "vue": "^2.5.17",
+    "vue-cli-plugin-vuetify": "^0.2.1",
+    "vue-mapbox": "^0.4.1",
+    "vue-mobile-detection": "^1.0.0",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17",
+    "vue-toastr": "^2.1.2",
+    "vuetify": "^1.2.0",
+    "vuex": "^3.0.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}

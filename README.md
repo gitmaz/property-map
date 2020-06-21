@@ -1,22 +1,20 @@
-# Property-Map: Client side grid lookup app with Vue, Cosmic JS, and Vuetify
+### property-map 
+Client side realestate filtering and geographical mapping application using Vue, Vuetify and Mapbox
 
-<img src="./article/images/home-filter-action.gif" style="display: block; margin-left: auto; margin-right: auto;"/>
-
-# Links
+#### Links
 
 <a href="http://Property-Map.cosmicapp1.co" target="_blank">Demo</a>
 
 <a href="./article/article.md" target="_blank">Tutorial article</a>
 
-# Libraries
+#### Libraries
 
 * Vue
-* Vuex
 * Vuetify
-* Cosmic JS
-* Moment JS
+* Mapbox
+* Vue-Mapbox
 
-# Project setup
+#### Project setup
 
 ```
 
@@ -29,19 +27,17 @@ npm run serve
 # compiles and minifies for production
 npm run build
 
-# configure env variables
-rename .env.sample to .env and paste your API keys
-
-# before you delploy to Cosmic
-change you .env config
-npm build
-npm start
-# if all works, then you can delpoy to Cosmic JS from the dashboard -> settings -> hosting
-
 # Lints and fixes files
 npm run lint
-
-
 ```
 
-<img src="./article/images/main_screen_large.png" alt="Property-Map Main Screen" />
+## License
+
+property-map is licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Code reuse/fork is fine when referring the author's name in your projects (and front facing about pages).
+ 
+Author:
+Maziar Navabi
+22/06/2020
+
+```

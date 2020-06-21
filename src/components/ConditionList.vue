@@ -102,7 +102,7 @@
                     let conditionKey = item.field
                     let condition = item
                     condition.opTranslated = opTranslations[item.operator]
-                    let envelope = (condition.type == "text" ? "'" : "")
+                    let envelope = (condition.type == "text" || condition.type == "lookup"? "'" : "")
                     condition.value = item.opTranslated + " " + envelope + item.term + envelope
                     conditionsObject[conditionKey] = condition
                 }

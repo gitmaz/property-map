@@ -1,7 +1,10 @@
 <template>
     <v-app>
-        <SideBar :shouldShowDrawer="shouldShowDrawer" @update-should-show-drawer="onUpdateShouldShowDrawerTriggered"
-                 @on-filter-changed="onFilterChanged"></SideBar>
+        <SideBar :shouldShowDrawer="shouldShowDrawer"
+                 @update-should-show-drawer="onUpdateShouldShowDrawerTriggered"
+                 @on-filter-changed="onFilterChanged"
+                 :lookups="lookups"
+                 :keyTranslations="keyTranslations"></SideBar>
         <v-toolbar app color="green accent-4" height="48px">
             <v-icon @click.stop="shouldShowDrawer = !shouldShowDrawer">menu</v-icon>
             <v-divider class="mx-2" vertical></v-divider>
@@ -49,6 +52,8 @@
             return {
                 countFound: 0,
                 geos: geos,
+                lookups: [],
+                keyTranslations: [],
                 fixed: false,
                 title: 'Property Map',
                 shouldShowDrawer: (this.$isMobile() ? false : true)
@@ -82,6 +87,16 @@
         },
         mounted() {
 
+            let lookupFields=["Project ID", "Type", "Suburb", "State", "Category", "SubCategory", "Status", "Council", "Dev. Type", "Ownership"];
+
+            for(let ind in lookupFields){
+                let fieldName=lookupFields[ind];
+                this.lookups[fieldName]=propertyFilter.defaultPropertyFilter.getDataVariety(this.geos, fieldName);
+            }
+
+            this.keyTranslations=propertyFilter.defaultPropertyFilter.geoKeyTranslation;
+
+            console.log(this.lookups);
         },
     }
 </script>

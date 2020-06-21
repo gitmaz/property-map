@@ -32,7 +32,7 @@ let PropertyFilter= function(name) {
             additionalDetails: "Additional Details",
             lat: "Lat",
             long: "Long"
-    };
+    }
 
     let applyFilters=function(geos, conditionsObject) {
 
@@ -82,6 +82,7 @@ let PropertyFilter= function(name) {
                             fullConditionPhrase += (i == 0 ? "" : " && ") + "(" + columnValue + condition + ")"
                         }
                         break
+                    case "lookup":
                     case "text":
                         if (condition.startsWith("startsWith")) {
 
@@ -145,9 +146,9 @@ let PropertyFilter= function(name) {
         })
 
         return filteredResults
-    };
+    }
 
-    var getMapReadyFeatures=function(geoProjects) {
+    let getMapReadyFeatures=function(geoProjects) {
 
         let features = []
         for (let ind in geoProjects) {
@@ -172,10 +173,11 @@ let PropertyFilter= function(name) {
         }
         //console.log(features)
         return features
-    };
+    }
+
     /* prepares date for comparison by swapping the year portion with the day to form an incremental numberic value ready foe evel() comparison */
     // eslint-disable-next-line no-unused-vars
-    var getPreparedtDate=function(dateStr) {
+    let getPreparedtDate=function(dateStr) {
         dateStr = dateStr.replace("\\", "")
         let regexp = /^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-](\d{2})/g
         let match = regexp.exec(dateStr)
@@ -184,20 +186,37 @@ let PropertyFilter= function(name) {
         }
         let prepared = match[3] + match[2] + match[1]
         return prepared
-    };
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    let getDataVariety=function(geos, fieldName){
+
+        // eslint-disable-next-line no-unused-vars
+        let fieldValues = geos.features.map(function (feature) {
+            return feature.properties.project[fieldName];
+        })
+
+        var distinctFieldValues = fieldValues.filter( function(value, index, self) {
+            return self.indexOf(value) === index;
+        });
+
+        return distinctFieldValues;
+
+    }
 
     return {
         name: name,
         init: init,
         printName(){
-            console.log(this.name);
+            console.log(this.name)
         },
         applyFilters: applyFilters,
         getMapReadyFeatures: getMapReadyFeatures,
-        geoKeyTranslation: geoKeyTranslation
+        geoKeyTranslation: geoKeyTranslation,
+        getDataVariety: getDataVariety
 
     }
 
-};
-export var defaultPropertyFilter=new PropertyFilter('default');
-defaultPropertyFilter.init();
+}
+export var defaultPropertyFilter=new PropertyFilter('default')
+defaultPropertyFilter.init()

@@ -97,7 +97,9 @@
     export default {
         name: 'home',
         props: [
-            "shouldShowDrawer"
+            "shouldShowDrawer",
+            "lookups",
+            "keyTranslations"
         ],
         components: {
             ConditionList,
@@ -111,18 +113,18 @@
 
                 filterFields: [
 //lookup
-                    {text: "Project ID", value: 'projectId', type: 'text'},
+                    {text: "Project ID", value: 'projectId', type: 'lookup'},
                     {text: "Title", value: 'title', type: 'text'},
-                    {text: "Type", value: 'type', type: 'text'},
+                    {text: "Type", value: 'type', type: 'lookup'},
                     {text: "Address", value: 'address', type: 'text'},
-                    {text: "Suburb", value: 'suburb', type: 'text'},
-                    {text: "State", value: 'state', type: 'text'},
-                    {text: "Stage", value: 'stage', type: 'text'},
-                    {text: "Category", value: 'category', type: 'text'},
-                    {text: "SubCategory", value: 'subCategory', type: 'text'},
-                    {text: "Status", value: 'status', type: 'text'},
-                    {text: "Council", value: 'council', type: 'text'},
-                    {text: "Dev. Type", value: 'devType', type: 'text'},
+                    {text: "Suburb", value: 'suburb', type: 'lookup'},
+                    {text: "State", value: 'state', type: 'lookup'},
+                    {text: "Stage", value: 'stage', type: 'lookup'},
+                    {text: "Category", value: 'category', type: 'lookup'},
+                    {text: "SubCategory", value: 'subCategory', type: 'lookup'},
+                    {text: "Status", value: 'status', type: 'lookup'},
+                    {text: "Council", value: 'council', type: 'lookup'},//'text'},
+                    {text: "Dev. Type", value: 'devType', type: 'lookup'},
                     {text: "Floor Area", value: 'floorArea', type: 'number3'},
                     {text: "Site Area", value: 'siteArea', type: 'number3'},
                     {text: "Storeys", value: 'storeys', type: 'number'},
@@ -131,7 +133,7 @@
                     {text: "Completion Date", value: 'completionDate', type: 'date'},
                     {text: "Last Updated", value: 'lastUpdate', type: 'date'},
                     {text: "Value", value: 'value', type: 'number3'},
-                    {text: "Ownership", value: 'ownership', type: 'text'},
+                    {text: "Ownership", value: 'ownership', type: 'lookup'},
                     {text: "Description", value: 'description', type: 'text'},
                     {text: "Notes", value: 'notes', type: 'text'},
                     {text: "Additional Details", value: 'additionalDetails', type: 'text'},
@@ -227,6 +229,9 @@
                     this.clearFilterTerms()
                 }
             },
+            filterLookupValue(){
+              this.filterTerm=this.filterLookupValue;
+            },
             filterOperator() {
                 if (this.filterType == null) {
                     return
@@ -250,9 +255,17 @@
                     this.filterTermRules = [this.rulesIsValidDate]
                 } else if (this.filterType === 'lookup') {
                     let lookupItems = []
-                    if (this.filterField === 'state') {
-                        lookupItems = this.states
-                        this.filterLookupLabel = 'State'
+                   /* let keyTranslations=this.keyTranslations
+                    let value=this.filterField
+                    let foundKeys = Object.keys(keyTranslations).filter(function(key) {
+                        return keyTranslations[key] == value;
+                    })
+                    */
+                    let translation=this.keyTranslations[this.filterField];
+
+                    if (translation) {
+                        lookupItems = this.lookups[translation];
+                        this.filterLookupLabel = translation
                     }
                     this.filterLookupItems = lookupItems
                     this.filterLookupValue = ''
@@ -280,24 +293,6 @@
                 this.filterLookupItems = []
                 this.filterLookupLabel = ''
             },
-            /*filterByLookupIs (list, fieldName, fieldValue) {
-                return list.filter(item => {
-                    if(item[fieldName] !== undefined) {
-                        return item[fieldName] === fieldValue
-                    } else {
-                        return true
-                    }
-                })
-            },
-            filterByLookupIsNot (list, fieldName, fieldValue) {
-                return list.filter(item => {
-                    if(item[fieldName] !== undefined) {
-                        return item[fieldName] !== fieldValue
-                    } else {
-                        return true
-                    }
-                })
-            }*/
             // ---------- Events ------------------------
             onClearAllFilters() {
                 this.filterField = null

@@ -1,12 +1,6 @@
 ### property-map 
 Client side realestate filtering and geographical mapping application using Vue, Vuetify and Mapbox
 
-#### Links
-
-<a href="http://Property-Map.cosmicapp1.co" target="_blank">Demo</a>
-
-<a href="./article/article.md" target="_blank">Tutorial article</a>
-
 #### Libraries
 
 * Vue

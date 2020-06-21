@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>About Page</h1>
-    <p>Property-Map is an all-in-one utility page to help teachers...</p>
+    <p>Property-Map is an all-in-one utility application to find and map realestate properties...</p>
   </div>
 </template>
 

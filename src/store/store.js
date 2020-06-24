@@ -1,3 +1,4 @@
+//for furure integration
 import Vue from 'vue'
 import Vuex from 'vuex'
 import _ from 'underscore'

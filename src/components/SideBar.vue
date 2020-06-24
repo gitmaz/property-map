@@ -210,6 +210,7 @@
 
         },
         watch: {
+
             filterField(newValue) {
                 if (newValue == null) {
                     return

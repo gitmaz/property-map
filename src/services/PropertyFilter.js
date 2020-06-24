@@ -62,6 +62,7 @@ let PropertyFilter= function(name) {
                 let columnValue = feature.properties.project[me.geoKeyTranslation[columnName]]
                 let conditionObj = conditions[i]
                 let conditionType = conditionObj.type
+                // eslint-disable-next-line no-unused-vars
                 let condition = conditionObj.value
                 let conditionTerm = conditionObj.term
                 let opTranslated = conditionObj.opTranslated
@@ -84,6 +85,7 @@ let PropertyFilter= function(name) {
                         break
                     case "lookup":
                     case "text":
+
                         if (condition.startsWith("startsWith")) {
 
                             //this block is for string comparisons using startsWith
@@ -110,6 +112,10 @@ let PropertyFilter= function(name) {
                             }
                         } else {
 
+                            // this is a temporary bypass to remove the crash happening if textual data contains single quote
+                            //todo: do the same replace on filterTerm input for filter to also work for a those cases
+                            columnValue=columnValue.replace("'", "__single_qoute__");
+                            console.log(columnValue)
                             //this block is for string comparisons using <, > and == operators
                             fullConditionPhrase += (i == 0 ? "" : " && ") + "('" + columnValue + "'" + condition + ")"
                         }
@@ -132,6 +138,7 @@ let PropertyFilter= function(name) {
                 }
             }
 
+            //console.log(fullConditionPhrase);
             let conditionsApply = eval(fullConditionPhrase)
             if (conditionsApply) {
                 return feature.properties.project

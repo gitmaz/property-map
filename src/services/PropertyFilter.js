@@ -219,8 +219,10 @@ let PropertyFilter= function(name) {
         },
         applyFilters: applyFilters,
         getMapReadyFeatures: getMapReadyFeatures,
-        geoKeyTranslation: geoKeyTranslation,
-        getDataVariety: getDataVariety
+        getPreparedtDate:getPreparedtDate,
+        getDataVariety: getDataVariety,
+        geoKeyTranslation: geoKeyTranslation
+
 
     }
 

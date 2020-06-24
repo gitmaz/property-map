@@ -308,7 +308,7 @@
 
             },
             onAddFilter() {
-                var fieldConditionIndex = this.$refs.conditionList.getFieldConditionIndex(this.filterTermSanitized)
+                var fieldConditionIndex = this.$refs.conditionList.getFieldConditionIndex(this.filterField)
                 if (fieldConditionIndex != -1) {
                     this.focusConditionIndex = fieldConditionIndex
                     //decide on adding by user confirmation on onOverwriteConfirmed instead

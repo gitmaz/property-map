@@ -86,6 +86,11 @@ let PropertyFilter= function(name) {
                     case "lookup":
                     case "text":
 
+                        // this is a temporary bypass to remove the crash happening if textual data contains single quote
+                        //todo: do the same replace on filterTerm input for filter to also work for a those cases
+                        columnValue=columnValue.replace("'", "__single_qoute__");
+                        //console.log(columnValue)
+
                         if (condition.startsWith("startsWith")) {
 
                             //this block is for string comparisons using startsWith
@@ -112,10 +117,7 @@ let PropertyFilter= function(name) {
                             }
                         } else {
 
-                            // this is a temporary bypass to remove the crash happening if textual data contains single quote
-                            //todo: do the same replace on filterTerm input for filter to also work for a those cases
-                            columnValue=columnValue.replace("'", "__single_qoute__");
-                            console.log(columnValue)
+
                             //this block is for string comparisons using <, > and == operators
                             fullConditionPhrase += (i == 0 ? "" : " && ") + "('" + columnValue + "'" + condition + ")"
                         }
@@ -138,11 +140,9 @@ let PropertyFilter= function(name) {
                 }
             }
 
-            //console.log(fullConditionPhrase);
             let conditionsApply = eval(fullConditionPhrase)
             if (conditionsApply) {
                 return feature.properties.project
-                //return feature.properties.id
             } else {
                 return null
             }

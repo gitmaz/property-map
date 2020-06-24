@@ -112,7 +112,6 @@
                 countConditions: 0,
 
                 filterFields: [
-//lookup
                     {text: "Project ID", value: 'projectId', type: 'lookup'},
                     {text: "Title", value: 'title', type: 'text'},
                     {text: "Type", value: 'type', type: 'lookup'},
@@ -206,6 +205,12 @@
         computed: {
             bg() {
                 return this.background ? 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg' : undefined
+            },
+            filterTermSanitized: {
+
+                get: function () {
+                    return this.filterTerm.replace("'", "__single_qoute__");
+                }
             }
 
         },
@@ -303,7 +308,7 @@
 
             },
             onAddFilter() {
-                var fieldConditionIndex = this.$refs.conditionList.getFieldConditionIndex(this.filterField)
+                var fieldConditionIndex = this.$refs.conditionList.getFieldConditionIndex(this.filterTermSanitized)
                 if (fieldConditionIndex != -1) {
                     this.focusConditionIndex = fieldConditionIndex
                     //decide on adding by user confirmation on onOverwriteConfirmed instead
@@ -344,7 +349,7 @@
                     field: this.filterField,
                     type: this.filterType,
                     operator: this.filterOperator,
-                    term: this.filterTerm,
+                    term: this.filterTermSanitized,
                     term2: null
                 }
                 if (this.filterOperator === 'isBetween') {

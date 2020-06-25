@@ -180,8 +180,7 @@ let PropertyFilter= function(name) {
         return features
     }
 
-    /* prepares date for comparison by swapping the year portion with the day to form an incremental numberic value ready foe evel() comparison */
-    // eslint-disable-next-line no-unused-vars
+    /* prepares date for comparison by swapping the year portion with the day to form an incremental numeric value ready foe evel() comparison */
     let getPreparedtDate=function(dateStr) {
         dateStr = dateStr.replace("\\", "")
         let regexp = /^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-](\d{2})/g
@@ -193,7 +192,6 @@ let PropertyFilter= function(name) {
         return prepared
     }
 
-    // eslint-disable-next-line no-unused-vars
     let getDataVariety=function(geos, fieldName){
 
         // eslint-disable-next-line no-unused-vars

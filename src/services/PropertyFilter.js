@@ -85,7 +85,7 @@ let PropertyFilter= function(name) {
                     case "lookup":
                     case "text":
 
-                        // this is a temporary bypass to remove the crash happening if textual data contains single quote
+                        // this is a fix to remove the crash happening if textual data contains single quote
                         columnValue=columnValue.replace("'", "__single_qoute__");
                         //console.log(columnValue)
 

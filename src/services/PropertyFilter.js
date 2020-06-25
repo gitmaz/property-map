@@ -43,8 +43,7 @@ let PropertyFilter= function(name) {
             })
             return results
         }
-
-        //todo: move this filtering functionality to a class
+        
         let me = this
         let rawResults = geos.features.map(function (feature) {
 

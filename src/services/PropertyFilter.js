@@ -43,7 +43,7 @@ let PropertyFilter= function(name) {
             })
             return results
         }
-        
+
         let me = this
         let rawResults = geos.features.map(function (feature) {
 
@@ -86,7 +86,6 @@ let PropertyFilter= function(name) {
                     case "text":
 
                         // this is a temporary bypass to remove the crash happening if textual data contains single quote
-                        //todo: do the same replace on filterTerm input for filter to also work for a those cases
                         columnValue=columnValue.replace("'", "__single_qoute__");
                         //console.log(columnValue)
 

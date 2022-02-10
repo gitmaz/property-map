@@ -18,7 +18,7 @@
     "cosmicjs": "^3.2.15",
     "mapbox-gl": "^1.11.0",
     "moment": "^2.22.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "pg-restify": "^0.5.0",
     "restify": "^7.2.1",
     "restify-cors-middleware": "^1.1.1",

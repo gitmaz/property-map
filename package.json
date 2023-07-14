@@ -14,7 +14,7 @@
     "@babel/polyfill": "^7.0.0-rc.1",
     "@vue/cli-plugin-babel": "^3.5.1",
     "@vue/cli-plugin-eslint": "^3.0.4",
-    "@vue/cli-service": "^3.5.1",
+    "@vue/cli-service": "^5.0.8",
     "cosmicjs": "^3.2.15",
     "mapbox-gl": "^1.11.0",
     "moment": "^2.22.2",
